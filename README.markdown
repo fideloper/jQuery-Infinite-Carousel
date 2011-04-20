@@ -17,4 +17,5 @@ Unbind buttons - Note the selector changed to the previously bound buttons. This
 	$('#next_button_selector, #prev_button_selector').carousel('unbind');
 
 
+### License
 Released under GNU GPLv2: http://www.gnu.org/licenses/old-licenses/gpl-2.0.html
