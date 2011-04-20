@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>jQuery Infinite Carousel v2.0</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				font-family: helvetica,arial,sans-serif;
+			}
+			
+			body {
+				margin-top: 20px;
+			}
+			
+			#main-wrapper {
+				width: 500px;
+				padding: 0 100px; /* Give space for next and prev buttons */
+				position: relative; /* Position relative for proper document flow */
+			}
+			
+			#slide_wrapper {
+				border: 1px solid #CCC;
+				height: 200px;
+				width: 100%; /* 500px */
+				overflow: hidden; /* Hide extra LI elements */
+				position: relative; /* Position relative for proper document flow */
+			}
+			
+			#slide_wrapper ul {
+				list-style: none;
+				overflow: hidden; /* Hide overflow here as well. */
+				position: absolute;
+			}
+			
+			#slide_wrapper ul li {
+				float: left;
+				width: 480px; /* 500 - (2*10) = 480 */
+				height: 180px; /* 200 - (2*10) = 180 */
+				padding: 10px;
+			}
+			
+			/* Quick and dirty next/prev buttons */
+			.btn {
+				display: block;
+				width: 100px;
+				position: absolute;
+				top: 50px;
+			}
+			.btn a {
+				display: block;
+				width: 80px;
+				padding: 0 10px;
+			}
+			#prev {
+				left: 0;
+			}
+			#next {
+				right: 0;
+			}
+			
+			/* Just for fun */
+			h1 {
+				margin-bottom: 14px;
+			}
+			a {
+				color: black;
+				text-decoration: none;
+			}
+			img {
+				border: 1px solid #CCC;
+				margin: 0 5px 0 5px;
+				padding: 4px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main-wrapper">
+			<p id="prev" class="btn"><a href="#">&#171; Previous</a></p>
+			<div id="slide_wrapper">
+				<ul>
+					<li>
+						<h1>This is the first slide</h1>
+						<p><img src="avatar1.gif" align="left" /></p>
+						<p>Enter in whatever you want. Pellentesque elementum elementum ante, et commodo magna posuere in. Vivamus cursus enim nec turpis mattis ultrices in sit amet leo.</p>
+					</li>
+					<li>
+						<h1>This is the second slide</h1>
+						<p><img src="avatar2.gif" align="right" /></p>
+						<p>Enter in whatever you want. Pellentesque elementum elementum ante, et commodo magna posuere in. Vivamus cursus enim nec turpis mattis ultrices in sit amet leo.</p>
+					</li>
+					<li>
+						<h1>This is the third slide</h1>
+						<p><img src="avatar3.gif" align="left" /></p>
+						<p>Enter in whatever you want. Pellentesque elementum elementum ante, et commodo magna posuere in. Vivamus cursus enim nec turpis mattis ultrices in sit amet leo.</p>
+					</li>
+				</ul>
+			</div>
+			<p id="next" class="btn"><a href="#">Next &#187;</a></p>
+			<p><a href="#" id="unbind" style="float:left; margin-top:20px;">Unbind Buttons</a></p>
+			<div style="clear:both;"></div>
+			<small class="yeahthatsrightiusedasmalltag"><p>^Try binding and ubinding the buttons by clicking the above.</p></small>
+		</div>
+		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.js"></script>
+		<script src="../jquery.infinite-carousel-v2.0.js"></script>
+		<script>
+			$(function() {
+				/*
+					The initializing and binding the buttons are done separately. Coupled
+					with the unbind function [for example: $('#next a, #prev a').carousel('unbind')]
+					allows for more control over button actions
+					
+					This has been used to control multiple infinite scrollers with one set of buttons
+					for instance
+				*/
+				$('#slide_wrapper').carousel().carousel('bind', {next:'#next a', prev:'#prev a'});
+				
+				$('#unbind').click(function() {
+					if($(this).text() === 'Unbind Buttons') {
+						$('#next a, #prev a').carousel('unbind');
+						$(this).text('Bind Buttons');
+					} else {
+						$('#slide_wrapper').carousel('bind', {next:'#next a', prev:'#prev a'});
+						$(this).text('Unbind Buttons');
+					}
+					return false;
+				});
+			});
+		</script>
+	</body>
+</html>
