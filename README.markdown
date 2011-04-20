@@ -5,16 +5,16 @@ See the example for HTML and CSS usage.
 
 ## Methods
 Initialize:
-    $('#ul_parent_item).carousel();
+   $('#ul_parent_item).carousel();
 
 Bind next and previous buttons:
-    $('#ul_parent_item).carousel('bind', {prev:'#prev_button_selector', next:'#next_button_selector'});
+  $('#ul_parent_item).carousel('bind', {prev:'#prev_button_selector', next:'#next_button_selector'});
 
 Or chain them:
-    $('#ul_parent_item).carousel().carousel('bind', {prev:'#prev_button_selector', next:'#next_button_selector'});
+  $('#ul_parent_item).carousel().carousel('bind', {prev:'#prev_button_selector', next:'#next_button_selector'});
 
 Unbind buttons - Note the selector changed to the previously bound buttons. This may change in the future implementation:
-    $('#next_button_selector, #prev_button_selector').carousel('unbind');
+  $('#next_button_selector, #prev_button_selector').carousel('unbind');
 
 
 ### License
